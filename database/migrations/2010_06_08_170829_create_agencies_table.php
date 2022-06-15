@@ -16,7 +16,7 @@ class CreateAgenciesTable extends Migration
         Schema::create('agencies', function (Blueprint $table) {
             $table->id();
             $table->foreignId('bank_id')->constrained('banks');
-            $table->string('agency_number', 5);
+            $table->string('agency_number', 4);
             $table->timestamps();
         });
     }
