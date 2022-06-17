@@ -3,16 +3,14 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AccountApiController;
+use App\Http\Controllers\Api\BankApiController;
+use App\Http\Controllers\Api\AgencyApiController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+//bank
+Route::get('bank', [BankApiController::class, 'index']);
 
-Route::get('/accounts', [AccountApiController::class, 'index']);
+//agency
+Route::get('agency', [AgencyApiController::class, 'index']);
+
+//account
+Route::get('account', [AccountApiController::class, 'index']);

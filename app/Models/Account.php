@@ -9,7 +9,7 @@ class Account extends Model
 {
 
     protected $fillable = [
-        'password', 'user_id', 'balance', 'account_number'
+        'password', 'user_id'
     ];
 
     protected $hidden = ['password'];
@@ -49,6 +49,7 @@ class Account extends Model
     {
         return $this->hasOne(Extract::class);
     }
+    
 }
 
 

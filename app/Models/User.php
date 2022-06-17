@@ -56,4 +56,20 @@ class User extends Authenticatable
     {
         return $this->hasOne(Address::class);
     }
+
+    public function rules ()
+    {
+        return [
+            'users' => [
+                'name' => 'required',
+                'birth_date' => 'required',
+                'email' => 'required|unique',
+                'telephone' => 'required',
+                'gender' => 'required',
+                'document_type' => 'required',
+                'document_number' => 'required|unique',
+                'password' => 'required'
+            ]
+        ];
+    }
 }

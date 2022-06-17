@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class UserSeeder extends Seeder
@@ -23,7 +24,7 @@ class UserSeeder extends Seeder
         $user->gender = 'M';
         $user->document_type = 'CPF';
         $user->document_number = '39376715870';
-        $user->password = '12345678';
+        $user->password = Hash::make('12345678');
         $user->save();
 
         $user->address()->create([
@@ -36,6 +37,13 @@ class UserSeeder extends Seeder
             'state' => 'são paulo',
         ]);
 
+        $user->account()->create([
+            'agency_id' => '1',
+            'account_number' => rand(1000, 99999),
+            'balance' => '10000',
+            'password' => $user->password
+        ]);
+
         $user = new User ();
 
         $user->name = 'Igor';
@@ -45,7 +53,7 @@ class UserSeeder extends Seeder
         $user->gender = 'N';
         $user->document_type = 'CPF';
         $user->document_number = '00000000000';
-        $user->password = '12345678';
+        $user->password =  Hash::make('123456');
         $user->save();
 
         $user->address()->create([
@@ -56,6 +64,13 @@ class UserSeeder extends Seeder
             'district' => 'jardim ouro verde',
             'city' => 'campinas',
             'state' => 'são paulo',
+        ]);
+
+        $user->account()->create([
+            'agency_id' => '1',
+            'account_number' => rand(1000, 99999),
+            'balance' => '10000',
+            'password' => $user->password
         ]);
     }
 }

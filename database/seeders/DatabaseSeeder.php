@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
             BankSeeder::class,
             AgencySeeder::class,
             UserSeeder::class,
-            AccountSeeder::class
         ]);
     }
 }
