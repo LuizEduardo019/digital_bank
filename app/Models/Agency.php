@@ -11,14 +11,14 @@ class Agency extends Model
     
     protected $with = ['bank'];
 
-    /*public static function boot()
+    public static function boot()
     {
         parent::boot();
         self::creating(function ($model)
         {
             $model->agency_number = rand(1000, 1999);
         });
-    }*/
+    }
     
     public function bank() 
     {

@@ -19,7 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'birth date',
+        'birthdate',
         'email',
         'telephone',
         'gender',
@@ -57,17 +57,17 @@ class User extends Authenticatable
         return $this->hasOne(Address::class);
     }
 
-    public function rules ()
+    public function rulesUsers ()
     {
         return [
             'users' => [
                 'name' => 'required',
                 'birth_date' => 'required',
-                'email' => 'required|unique',
+                'email' => 'required|unique:users',
                 'telephone' => 'required',
                 'gender' => 'required',
                 'document_type' => 'required',
-                'document_number' => 'required|unique',
+                'document_number' => 'required|unique:users',
                 'password' => 'required'
             ]
         ];

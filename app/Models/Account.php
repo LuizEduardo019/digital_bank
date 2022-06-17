@@ -14,16 +14,16 @@ class Account extends Model
 
     protected $hidden = ['password'];
 
-    /*public static function boot()
+    public static function boot()
     {
     parent::boot();
     self::creating(function ($model) 
     {
-        $model->agency_id = 1;
+        $model->agency_id = '1';
         $model->balance = 10000;
         $model->account_number = rand(1000, 9999);
     });
-    }*/
+    }
 
     public function agency()
     {
