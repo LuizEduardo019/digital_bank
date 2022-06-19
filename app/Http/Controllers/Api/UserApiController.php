@@ -16,11 +16,11 @@ use App\Models\Account;
 class UserApiController extends Controller
 {
 
-    public function __construct(User $user, Request $request, Hash $hash)
+    public function __construct(User $user, Request $request)
     {
         $this->user = $user;
         $this->request = $request;
-        $this->hash = $hash;
+        
     }
 
     public function index()
@@ -32,6 +32,27 @@ class UserApiController extends Controller
 
     public function store(Request $request)
     {        
+        //validate
+        $request->validate([
+           
+            //user
+            'name' => 'required',
+            'birth_date' => 'required',
+            'email' => 'required|unique',
+            'telephone' => 'required',
+            'gender' => 'required',
+            'document_type' => 'required',
+            'document_number' => 'required|unique|max:11',
+            'password' => 'required',
+            
+            //address
+            'cep' => 'required|max:8',
+            'street' => 'required',
+            'number' => 'required', 
+            'district' => 'required',
+            'city' => 'required',
+            'state' => 'required'
+        ]);
         //user
         $user = new User();
     
@@ -50,7 +71,7 @@ class UserApiController extends Controller
         $account->password = md5($user->password);
         $account->save();
 
-        //address
+        //address        
         $address = new Address();      
 
         $address->user_id = $user->id;
