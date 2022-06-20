@@ -57,4 +57,28 @@ class User extends Authenticatable
         return $this->hasOne(Address::class);
     }
 
+    public function rulesUser()
+    {
+        return [
+            'name' => 'required',
+            'birth_date' => 'required',
+            'email' => 'email|unique:users',
+            'telephone' => 'required',
+            'gender' => 'required',
+            'document_type' => 'required',
+            'document_number' => 'required|unique:users|max:11',
+            'password' => 'required'
+         ];
+    }
+
+    public function feedbackUser()
+    {
+        return [
+            'required' => 'O campo :attribute é obrigatório',
+            'email' => 'O e-mail informado não é válido',
+            'email.unique' => 'E-mail já cadastrado',
+            'document_number.unique' => 'O número do documento já está cadastrado',
+            'document_number.max' => 'O número do documento pode ter no máximo 11 caracteres'
+        ];
+    } 
 }
