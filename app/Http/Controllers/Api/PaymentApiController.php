@@ -24,7 +24,7 @@ class PaymentApiController extends Controller
      */
     public function create()
     {
-        //
+     testando
     }
 
     /**
