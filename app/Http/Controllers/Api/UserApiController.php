@@ -41,7 +41,7 @@ class UserApiController extends Controller
             'email' => 'required|unique',
             'telephone' => 'required',
             'gender' => 'required',
-            'document_type' => 'required',
+            'document_type' => 'required|unique:users',
             'document_number' => 'required|unique|max:11',
             'password' => 'required',
             
