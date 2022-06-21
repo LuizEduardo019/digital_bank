@@ -17,7 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->foreignId('to_account_id')->contrained('accounts');
             $table->float('value', 8,2)->unsigned();
-            $table->foreignId('of_accont_id')->contrained('accounts');
+            $table->foreignId('of_account_id')->contrained('accounts');
             $table->boolean('was_paid')->default(false);
             $table->timestamps();
         });
