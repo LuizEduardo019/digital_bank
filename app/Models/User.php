@@ -66,7 +66,7 @@ class User extends Authenticatable
             'telephone' => 'required',
             'gender' => 'required',
             'document_type' => 'required',
-            'document_number' => 'required|unique:users|max:11',
+            'document_number' => 'required|unique:users|max:11', 
             'password' => 'required'
          ];
     }
