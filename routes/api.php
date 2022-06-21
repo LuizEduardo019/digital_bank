@@ -20,3 +20,15 @@ Route::get('account', [AccountApiController::class, 'index']);
 //user
 Route::post('user', [UserApiController::class, 'store']);
 Route::get('user', [UserApiController::class, 'index']);
+
+//payments
+Route::get('payments', [paymentsApiController::class, 'index'])->middleware('auth');
+Route::post('payments_store', [paymentsApiController::class, 'store'])->middleware('auth');
+Route::put('payments_update', [paymentsApiController::class, 'update'])->middleware('auth');
+
+//transfers
+Route::get('transfers', [transfersApiController::class, 'index'])->middleware('auth');
+
+//extract
+
+Route::get('extract', [extractApiController::class, 'index'])->middleware('auth');

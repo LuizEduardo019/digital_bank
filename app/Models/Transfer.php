@@ -7,7 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class transfers extends Model
 {
-    protected $fillable = ['value', 'date', 'to_accont_id', 'of_accont_id'];
+    protected $fillable = 
+    [
+    'value', 
+    'date', 
+    'to_accont_id', 
+    'of_accont_id'
+    ];
 
     protected $dates = ['date'];
 
