@@ -15,11 +15,11 @@ class CreateTransfersTable extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('to_account_id')->contrained('accounts');
+            $table->foreignId('to_account')->contrained('accounts');
             $table->float('value', 8,2)->unsigned();
-            $table->date('transfer day')->nullabel();
+            $table->date('transfer_day')->nullabel();
             $table->text('description')->nullabel();
-            $table->foreignId('of_accont_id')->contrained('accounts');
+            $table->foreignId('of_accont')->contrained('accounts');
             $table->timestamps();
         });
     }

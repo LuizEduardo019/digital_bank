@@ -10,7 +10,7 @@ class transfers extends Model
     protected $fillable = 
     [
     'value', 
-    'date', 
+    'transfers_day', 
     'to_accont_id', 
     'of_accont_id'
     ];
