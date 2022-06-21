@@ -16,9 +16,10 @@ use App\Models\Account;
 class UserApiController extends Controller
 {
 
-    public function __construct(User $user, Request $request)
+    public function __construct(User $user, Address $address, Request $request)
     {
         $this->user = $user;
+        $this->address = $address;
         $this->request = $request;
         
     }
@@ -32,27 +33,11 @@ class UserApiController extends Controller
 
     public function store(Request $request)
     {        
-        //validate
-        $request->validate([
-           
-            //user
-            'name' => 'required',
-            'birth_date' => 'required',
-            'email' => 'required|unique',
-            'telephone' => 'required',
-            'gender' => 'required',
-            'document_type' => 'required|unique:users',
-            'document_number' => 'required|unique|max:11',
-            'password' => 'required',
-            
-            //address
-            'cep' => 'required|max:8',
-            'street' => 'required',
-            'number' => 'required', 
-            'district' => 'required',
-            'city' => 'required',
-            'state' => 'required'
-        ]);
+        //validation
+        $request->validate($this->user->rulesUser(), $this->user->feedbackUser(),
+            $this->address->rulesAddress(), $this->address->feedbackAddress()
+        );
+
         //user
         $user = new User();
     
@@ -81,8 +66,6 @@ class UserApiController extends Controller
         return response()->json(['msg' => 'Conta criada com sucesso', 
         'data' => ['users' => $user, 'address' => $address, 'account' => $account]]);
 
-        
-        
     }
 
 }
