@@ -17,8 +17,7 @@ class CreateTransfersTable extends Migration
             $table->id();
             $table->foreignId('to_account')->contrained('accounts');
             $table->float('value', 8,2)->unsigned();
-            $table->date('transfer_day')->nullabel();
-            $table->text('description')->nullabel();
+            $table->text('description', 50)->nullabel();
             $table->foreignId('of_accont')->contrained('accounts');
             $table->timestamps();
         });
