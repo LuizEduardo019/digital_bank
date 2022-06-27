@@ -8,7 +8,7 @@ use App\Http\Controllers\Api\AgencyApiController;
 use App\Http\Controllers\Api\UserApiController;
 use App\Http\Controllers\Api\PaymentsApiController;
 use App\Http\Controllers\Api\TransfersApiController;
-use App\Http\Controllers\Api\extractApiCntroller;
+use App\Http\Controllers\Api\ExtractApiController;
 
 
 //bank
@@ -26,12 +26,11 @@ Route::get('user', [UserApiController::class, 'index']);
 
 //payments
 Route::get('payments', [paymentsApiController::class, 'index'])->middleware('auth:api');
-Route::post('payments_store', [paymentsApiController::class, 'store'])->middleware('auth:api')->middleware('password.confirm');
+Route::post('payments_store', [paymentsApiController::class, 'store'])->middleware('auth:api');
 Route::put('payments_update', [paymentsApiController::class, 'update'])->middleware('auth:api');
 
 //transfers
-Route::post('transfers', [transfersApiController::class, 'store'])->middleware('auth:api')->middleware(['password.confirm']);
+Route::post('transfers', [transfersApiController::class, 'store'])->middleware('auth:api');
 
 //extract
-
-Route::get('extract', [extractApiController::class, 'index'])->middleware('auth:api')->middlaware('password.confirm');
+Route::get('extract', [extractApiController::class, 'index'])->middleware('auth:api');

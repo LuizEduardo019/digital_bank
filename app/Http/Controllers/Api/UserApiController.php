@@ -63,9 +63,6 @@ class UserApiController extends Controller
         $address->fill($request->all());
         $address->save();
 
-        return response()->json(['msg' => 'Conta criada com sucesso', 
-        'data' => ['users' => $user, 'address' => $address, 'account' => $account]]);
-
+        return response()->json(['msg' => 'Conta criada com sucesso'], 200);
     }
-
 }
