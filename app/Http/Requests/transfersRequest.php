@@ -24,9 +24,9 @@ class transfersRequest extends FormRequest
     public function rules()
     {
         return [
-            'to_account_id' => 'exist:account',
+            'to_account' => 'exist:account',
             'value' => 'required|min:0,01',
-            'of_account_id' => 'exist:account|required'   
+            'of_account' => 'exist:account|required'   
         ];
     }
 }
