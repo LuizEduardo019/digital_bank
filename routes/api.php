@@ -9,7 +9,7 @@ use App\Http\Controllers\Api\UserApiController;
 use App\Http\Controllers\Api\PaymentsApiController;
 use App\Http\Controllers\Api\TransferApiController;
 use App\Http\Controllers\Api\ExtractApiController;
-
+use App\Models\Account;
 
 //bank
 Route::get('bank', [BankApiController::class, 'index'])->middleware('auth:api');
@@ -24,6 +24,10 @@ Route::get('account', [AccountApiController::class, 'index']);
 Route::post('user', [UserApiController::class, 'store']);
 Route::get('user', [UserApiController::class, 'index']);
 
+Route::get('balance', function (Request $request){
+    return Account::select('balance')->where('user_id', auth()->user()->id)->first();
+})->middleware('auth:api');
+
 //payments
 Route::get('payments', [PaymentsApiController::class, 'index']);
 Route::post('payments_store', [PaymentsApiController::class, 'store']);
@@ -34,3 +38,4 @@ Route::post('transfers', [TransferApiController::class, 'store'])->middleware('a
 
 //extract
 Route::get('extract', [ExtractApiController::class, 'index']);
+

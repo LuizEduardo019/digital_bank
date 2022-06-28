@@ -9,7 +9,7 @@ class Account extends Model
 {
 
     protected $fillable = [
-        'password', 'user_id'
+        'password', 'user_id', 'balance', 'account_number'
     ];
 
     protected $hidden = ['password'];
@@ -17,7 +17,7 @@ class Account extends Model
     public static function boot()
     {
     parent::boot();
-    self::creating(function ($model) 
+    self::creating(function ($model)
     {
         $model->agency_id = '1';
         $model->balance = 10000;
@@ -49,7 +49,7 @@ class Account extends Model
     {
         return $this->hasOne(Extract::class);
     }
-    
+
 }
 
 

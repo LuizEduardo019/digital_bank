@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class transfers extends Model
+class Transfer extends Model
 {
-    protected $fillable = 
+    protected $fillable =
     [
     'value',
-    'to_accont_id', 
-    'of_accont_id'
+    'to_accont_id',
+    'of_accont_id',
+    'password_transfer'
     ];
 
     protected $dates = ['date'];

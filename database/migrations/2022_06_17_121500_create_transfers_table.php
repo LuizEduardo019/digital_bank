@@ -16,8 +16,9 @@ class CreateTransfersTable extends Migration
         Schema::create('transfers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('to_account')->contrained('accounts');
-            $table->float('value', 8,2)->unsigned();
+            $table->decimal('value', 8,2)->unsigned();
             $table->text('description', 50)->nullabel();
+            $table->unsignedBigInteger('password_transfer')->references('id')->on('accounts');
             $table->foreignId('of_account')->contrained('accounts');
             $table->timestamps();
         });
