@@ -18,7 +18,7 @@ class CreateTransfersTable extends Migration
             $table->foreignId('to_account')->contrained('accounts');
             $table->decimal('value', 8,2)->unsigned();
             $table->text('description', 50)->nullabel();
-            $table->unsignedBigInteger('password_transfer')->references('id')->on('accounts');
+            $table->integer('password_transfer');
             $table->foreignId('of_account')->contrained('accounts');
             $table->timestamps();
         });

@@ -15,16 +15,14 @@ class PaymentApiController extends Controller
         
     }
 
-    public function store(PaymentsRequest $request)
+    public function store(Request $request)
     {
         //
     }
 
 
-   public function update(PaymentsRequest $request, $id)
+    public function update(Request $request, $id)
     {
         //
     }
-
-
 }

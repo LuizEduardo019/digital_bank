@@ -10,8 +10,9 @@ class Transfer extends Model
     protected $fillable =
     [
     'value',
-    'to_accont_id',
-    'of_accont_id',
+    'to_account',
+    'of_account',
+    'description',
     'password_transfer'
     ];
 

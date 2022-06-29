@@ -15,20 +15,12 @@ class ExtractApiController extends Controller
 
     public function index()
     {
-        $account = new Account;
-        $payments = new Payment;
-        $transfers = new Transfer;
+        $transfers = Transfer::all();
+        //$payments = Payment::all();
 
-        if(!$account->active) {
-            return response()->json(['mensagem' => 'Sua conta precisa estar ativa para ver seu extrato']);
-        }elseif($payments == null){
-            return response()->json(['mensagem' => 'Você não tem pagamentos para ser exibidos']);
-        }elseif($transfers == null){
-            return response()->json(['mensagem' => 'Você não tem transferencias para ser exibidas']);
-        }else{
-
-        }
-
+        return response()->json([
+            'Essas são suas transferencias' => $transfers,
+            //'Esses são seus pagamentos' => $payments
+        ]);
     }
-
 }

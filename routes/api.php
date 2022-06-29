@@ -24,7 +24,7 @@ Route::get('account', [AccountApiController::class, 'index']);
 Route::post('user', [UserApiController::class, 'store']);
 Route::get('user', [UserApiController::class, 'index']);
 
-Route::get('balance', function (Request $request){
+Route::get('balance', function (Request $request) {
     return Account::select('balance')->where('user_id', auth()->user()->id)->first();
 })->middleware('auth:api');
 
@@ -38,4 +38,3 @@ Route::post('transfers', [TransferApiController::class, 'store'])->middleware('a
 
 //extract
 Route::get('extract', [ExtractApiController::class, 'index']);
-
