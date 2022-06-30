@@ -18,16 +18,16 @@ class TransferApiController extends Controller
 
         if (!$to_account->active) {
 
-            return response()->json(['mensagem' => 'Sua conta precisa estar ativa para efetuar o pagamento'], 203);
+            return response()->json(['message' => 'Sua conta precisa estar ativa para efetuar o pagamento'], 203);
         } elseif (!Hash::check($request['password_transfer'], $to_account->password)) {
 
-            return response()->json(['mensagem' => 'A senha esta incorreta'], 203);
+            return response()->json(['message' => 'senha incorreta'], 203);
         } elseif ($to_account->account_number == $of_account->account_number) {
 
-            return response()->json(['mensagem' => 'Não é possivel efetuar uma transferencia para si próprio'], 406);
+            return response()->json(['message' => 'Não é possivel efetuar uma transferencia para si próprio'], 406);
         } elseif ($to_account->balance < $request['value']) {
 
-            return response()->json(['mensagem' => 'Você não tem saldo para efetuar o pagamento'], 406);
+            return response()->json(['message' => 'Saldo insuficiente'], 406);
         } else {
 
 
@@ -46,9 +46,9 @@ class TransferApiController extends Controller
             $of_account->save();
 
             $transfer->update([
-                'status' => 'reconciled'
+                'status' => 'transfer carried out'
             ]);
-            return response()->json(['mensagem' => 'Transação concluida com sucesso'], 200);
+            return response()->json(['message' => 'Transação concluida com sucesso'], 200);
         }
     }
 }

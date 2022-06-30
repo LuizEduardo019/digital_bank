@@ -9,16 +9,16 @@ class Payment extends Model
 {
     protected $fillable =
     [
-        'to_account_id',
-        'of_account_id',
-        'value',
-        'to_accont_id',
-        'of_accont_id'
+        'payer_account',
+        'receiver_account',
+        'ticket_value',
+        'password_payment',
+        'was_paid'
     ];
 
 
-    public function account(){
+    public function account()
+    {
         return $this->belongsTo(account::class);
     }
-
 }

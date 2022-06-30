@@ -16,11 +16,13 @@ class ExtractApiController extends Controller
     public function index()
     {
         $transfers = Transfer::all();
-        //$payments = Payment::all();
+        $transfers = Transfer::auth();
+        $payments = Payment::all();
+        $payments = Payment::auth();
 
         return response()->json([
             'Essas são suas transferencias' => $transfers,
-            //'Esses são seus pagamentos' => $payments
+            'Esses são seus pagamentos' => $payments
         ]);
     }
 }

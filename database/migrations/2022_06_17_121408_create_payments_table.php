@@ -15,10 +15,10 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('to_account')->contrained('accounts');
-            $table->decimal('value', 8,2)->unsigned();
-            $table->foreignId('of_account')->contrained('accounts');
-            $table->unsignedBigInteger('password_transfer')->references('id')->on('accounts');
+            $table->foreignId('payer_account')->contrained('accounts');
+            $table->decimal('ticket_value', 8, 2)->unsigned();
+            $table->foreignId('receiver_account')->contrained('accounts');
+            $table->integer('password_payment');
             $table->boolean('was_paid')->default(false);
             $table->timestamps();
         });

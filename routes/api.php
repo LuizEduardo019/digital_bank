@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\AccountApiController;
 use App\Http\Controllers\Api\BankApiController;
 use App\Http\Controllers\Api\AgencyApiController;
 use App\Http\Controllers\Api\UserApiController;
-use App\Http\Controllers\Api\PaymentsApiController;
+use App\Http\Controllers\Api\PaymentApiController;
 use App\Http\Controllers\Api\TransferApiController;
 use App\Http\Controllers\Api\ExtractApiController;
 use App\Models\Account;
@@ -29,12 +29,12 @@ Route::get('balance', function (Request $request) {
 })->middleware('auth:api');
 
 //payments
-Route::get('payments', [PaymentsApiController::class, 'index']);
-Route::post('payments_store', [PaymentsApiController::class, 'store']);
-Route::put('payments_update', [PaymentsApiController::class, 'update']);
+Route::get('payment', [PaymentApiController::class, 'index'])->middleware('auth:api');
+Route::post('payment_store', [PaymentApiController::class, 'store'])->middleware('auth:api');
+Route::put('payment_update', [PaymentApiController::class, 'update'])->middleware('auth:api');
 
 //transfers
 Route::post('transfers', [TransferApiController::class, 'store'])->middleware('auth:api');
 
 //extract
-Route::get('extract', [ExtractApiController::class, 'index']);
+Route::get('extract', [ExtractApiController::class, 'index'])->middleware('auth:api');
