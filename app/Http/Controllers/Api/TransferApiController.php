@@ -35,7 +35,7 @@ class TransferApiController extends Controller
                 'to_account' => $to_account->id,
                 'value' => $request['value'],
                 'description' => $request['description'],
-                'password_transfer' => '0',
+                'password_transfer' => Hash::make($request['password_trnasfer']),
                 'of_account' => $of_account->id,
                 'status' => 'processing'
             ]);

@@ -29,4 +29,13 @@ class PaymentsRequest extends FormRequest
             'of_account_id' => 'exist:account|required'
         ];
     }
+
+    public function feedback()
+    {
+
+        return [
+            'required' => 'O campo :attribute é obrigatório',
+            'receiver_account.exist:account' => 'A conta de destino precisa estar ativa para realizar o pagamento'
+        ];
+    }
 }

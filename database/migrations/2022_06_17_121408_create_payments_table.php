@@ -18,7 +18,7 @@ class CreatePaymentsTable extends Migration
             $table->foreignId('payer_account')->contrained('accounts');
             $table->decimal('ticket_value', 8, 2)->unsigned();
             $table->foreignId('receiver_account')->contrained('accounts');
-            $table->integer('password_payment');
+            $table->string('password_payment');
             $table->boolean('was_paid')->default(false);
             $table->timestamps();
         });

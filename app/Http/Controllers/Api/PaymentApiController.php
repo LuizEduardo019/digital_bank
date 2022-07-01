@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\PaymentsRequest;
+
 
 
 class PaymentApiController extends Controller
@@ -50,7 +50,7 @@ class PaymentApiController extends Controller
                 'ticket_code' => $codigoBoleto,
                 'ticket_value' => $request['ticket_value'],
                 'receiver_account' => $request['receiver_account'],
-                'password_payment' => $request['password_payment'],
+                'password_payment' => Hash::make($request['pasword_payment']),
                 'was_paid' => $request['was_paid'],
                 'status' => 'processing'
             ]);

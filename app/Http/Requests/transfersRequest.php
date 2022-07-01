@@ -24,10 +24,18 @@ class TransfersRequest extends FormRequest
     public function rules()
     {
         return [
-            'to_account' => 'exist:, account_number',
+            'to_account' => 'exist:account_number',
             'value' => 'required|min:0,01',
             'description' => 'nullabel',
             'of_account' => 'exist:account|required'
+        ];
+    }
+
+    public function feedback()
+    {
+        return [
+            'required' => 'O campo :attribute é obrigatório',
+            'of_account.exist:account' => 'A conta de destino precisa estar ativa para realizar o pagamento'
         ];
     }
 }

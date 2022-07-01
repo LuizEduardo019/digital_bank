@@ -6,9 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Payment;
 
-
-
-class Payments extends Seeder
+class PaymentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,13 +15,12 @@ class Payments extends Seeder
      */
     public function run()
     {
-
-        $payment = Payment::create([
-            'payer_account' => 1,
-            'ticket_value' => 1000.00,
-            'receiver_account' => rand(1000, 999999),
-            'password_payment' => Hash::make('12345678'),
-            'was_paid' => 0
-        ]);
+        $payment = new Payment();
+        $payment->payer_account = 1;
+        $payment->ticket_value = 1000.00;
+        $payment->receiver_account = 2;
+        $payment->password_payment = Hash::make('12345678');
+        $payment->was_paid = 0;
+        $payment->save();
     }
 }
